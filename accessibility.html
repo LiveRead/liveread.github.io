@@ -21,7 +21,7 @@
     header { position:sticky; top:0; background:rgba(255,255,255,.9); backdrop-filter:saturate(150%) blur(6px); border-bottom:1px solid #eee; }
     .wrap { max-width: 1040px; margin: 0 auto; padding: 1rem 1.25rem; }
     nav a { margin-right:.5rem; padding:.5rem .75rem; border-radius:10px; text-decoration:none; color:var(--fg); }
-    nav a[aria-current="page"] { background:#f3f4f6; }
+    nav a[aria-current="page"], nav a.is-active { background:#f3f4f6; }
     .hero { display:grid; grid-template-columns:1fr; gap:2rem; padding:3rem 0; }
     .kicker { color:var(--muted); font-weight:600; letter-spacing:.04em; text-transform:uppercase; font-size:.8rem; }
     h1 { font-size: clamp(2rem, 4vw + 1rem, 3rem); line-height:1.1; margin:.5rem 0 0; }
@@ -35,9 +35,7 @@
       .hero { grid-template-columns: 1.1fr .9fr; align-items:center; }
       .grid-3 { grid-template-columns: repeat(3,1fr); }
     }
-    /* Prefers reduced motion */
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
-    /* High contrast mode helpers */
     @media (prefers-contrast: more) { a.button { outline:2px solid #000; } }
   </style>
 </head>
@@ -55,17 +53,17 @@
         <strong style="font-size:1.05rem;color:var(--fg)">Live Read</strong>
       </a>
       <nav>
-        <a href="index.html" aria-current="page">Home</a>
-        <a href="contact.html">Contact</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="accessibility.html">Accessibility</a>
+        <a href="index.html" data-nav>Home</a>
+        <a href="contact.html" data-nav>Contact</a>
+        <a href="privacy.html" data-nav>Privacy</a>
+        <a href="accessibility.html" data-nav>Accessibility</a>
       </nav>
     </div>
   </div>
 </header>
 <div class="wrap">
 
-<main class="wrap">
+<main class="wrap" id="main-content" tabindex="-1">
   <article class="card" style="padding:1rem;">
     <h1>Accessibility Statement</h1>
     <p>We built Live Read for people with low vision and blindness. The app supports VoiceOver, Dynamic Type, high contrast, and reduced motion. This website aims to meet <strong>WCAG 2.2 AA</strong>.</p>
@@ -73,7 +71,7 @@
     <p>If you encounter a barrier, email us at <a href="mailto:livereadapp@gmail.com">livereadapp@gmail.com</a>. We aim to reply within 5 business days.</p>
     <h2>Known Limitations</h2>
     <ul>
-      <li>Third‑party embeds may not fully meet WCAG criteria.</li>
+      <li>Third-party embeds may not fully meet WCAG criteria.</li>
     </ul>
   </article>
 </main>
@@ -84,13 +82,25 @@
     <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;justify-content:space-between;padding:1.25rem 0;">
       <small>© Live Read 2025. Built for people with vision impairments.</small>
       <div style="display:flex;gap:.75rem;align-items:center;">
-        <a href="privacy.html">Privacy</a>
-        <a href="accessibility.html">Accessibility</a>
+        <a href="privacy.html" data-nav>Privacy</a>
+        <a href="accessibility.html" data-nav>Accessibility</a>
         <a href="mailto:livereadapp@gmail.com">livereadapp@gmail.com</a>
       </div>
     </div>
   </div>
 </footer>
+
+<script>
+  (function () {
+    var current = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('[data-nav]').forEach(function (a) {
+      var href = a.getAttribute('href');
+      var normalized = href === '/' ? 'index.html' : href.replace(/\/+$/, '');
+      var match = normalized === current;
+      a.classList.toggle('is-active', match);
+      if (match) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+    });
+  })();
+</script>
 </body>
 </html>
-
