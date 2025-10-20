@@ -21,7 +21,8 @@
     header { position:sticky; top:0; background:rgba(255,255,255,.9); backdrop-filter:saturate(150%) blur(6px); border-bottom:1px solid #eee; }
     .wrap { max-width: 1040px; margin: 0 auto; padding: 1rem 1.25rem; }
     nav a { margin-right:.5rem; padding:.5rem .75rem; border-radius:10px; text-decoration:none; color:var(--fg); }
-    nav a[aria-current="page"] { background:#f3f4f6; }
+    /* highlight via aria-current or class */
+    nav a[aria-current="page"], nav a.is-active { background:#f3f4f6; }
     .hero { display:grid; grid-template-columns:1fr; gap:2rem; padding:3rem 0; }
     .kicker { color:var(--muted); font-weight:600; letter-spacing:.04em; text-transform:uppercase; font-size:.8rem; }
     h1 { font-size: clamp(2rem, 4vw + 1rem, 3rem); line-height:1.1; margin:.5rem 0 0; }
@@ -55,10 +56,11 @@
         <strong style="font-size:1.05rem;color:var(--fg)">Live Read</strong>
       </a>
       <nav>
-        <a href="index.html" aria-current="page">Home</a>
-        <a href="contact.html">Contact</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="accessibility.html">Accessibility</a>
+        <!-- removed hard-coded aria-current -->
+        <a href="index.html" data-nav>Home</a>
+        <a href="contact.html" data-nav>Contact</a>
+        <a href="privacy.html" data-nav>Privacy</a>
+        <a href="accessibility.html" data-nav>Accessibility</a>
       </nav>
     </div>
   </div>
@@ -95,7 +97,7 @@
         <div class="card">
           <div class="p">
             <h3 style="margin:.25rem 0;">Private, fast, and simple</h3>
-            <p>Live Read runs on-device. Point your camera at text and hear it read aloud — no menus to navigate, no sign‑up required.</p>
+            <p>Live Read runs on-device. Point your camera at text and hear it read aloud — no menus to navigate, no sign-up required.</p>
             <ul>
               <li>Optimized for VoiceOver</li>
               <li>Works offline after install</li>
@@ -114,12 +116,29 @@
     <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;justify-content:space-between;padding:1.25rem 0;">
       <small>© Live Read 2025. Built for people with vision impairments.</small>
       <div style="display:flex;gap:.75rem;align-items:center;">
-        <a href="privacy.html">Privacy</a>
-        <a href="accessibility.html">Accessibility</a>
+        <a href="privacy.html" data-nav>Privacy</a>
+        <a href="accessibility.html" data-nav>Accessibility</a>
         <a href="mailto:livereadapp@gmail.com">livereadapp@gmail.com</a>
       </div>
     </div>
   </div>
 </footer>
+
+<!-- Active-link highlighter (works on GitHub Pages) -->
+<script>
+  (function () {
+    // Get current file name ('' → 'index.html')
+    var current = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('[data-nav]').forEach(function (a) {
+      var href = a.getAttribute('href');
+      // Normalize both sides: treat '/' like 'index.html'
+      var normalizedHref = href === '/' ? 'index.html' : href.replace(/\/+$/, '');
+      var match = normalizedHref === current;
+      a.classList.toggle('is-active', match);
+      if (match) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+  })();
+</script>
 </body>
 </html>
