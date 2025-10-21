@@ -7,24 +7,52 @@
   <meta name="description" content="Accessibility statement for the Live Read app and website.">
   <link rel="icon" type="image/png" href="/favicon.png?v=2">
   <style>
-    :root { --bg:#ffffff; --fg:#0a0a0a; --muted:#4b5563; --brand:#facc15; --accent:#111827; }
-    html, body { margin:0; padding:0; background:var(--bg); color:var(--fg);
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+    :root {
+      --bg:#ffffff;
+      --fg:#0a0a0a;
+      --muted:#4b5563;
+      --brand:#facc15;
+      --accent:#111827;
+    }
+    html, body {
+      margin:0; padding:0;
+      background:var(--bg); color:var(--fg);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    }
 
-    a { color:var(--accent); text-decoration:underline; text-underline-offset:3px; font-weight:500; transition:color .15s ease; }
+    /* Visually clear link styling */
+    a {
+      color:var(--accent);
+      text-decoration:underline;
+      text-underline-offset:3px;
+      font-weight:500;
+      transition:color .15s ease;
+    }
     a:hover { color:#000; text-decoration-thickness:3px; }
     a:focus { outline:3px solid var(--accent); outline-offset:2px; border-radius:8px; }
 
-    header { position:sticky; top:0; background:rgba(255,255,255,.9); backdrop-filter:saturate(150%) blur(6px);
-      border-bottom:1px solid #eee; box-shadow:0 1px 2px rgba(0,0,0,.05); z-index:100; }
+    header {
+      position:sticky; top:0;
+      background:rgba(255,255,255,.9);
+      backdrop-filter:saturate(150%) blur(6px);
+      border-bottom:1px solid #eee;
+      box-shadow:0 1px 2px rgba(0,0,0,.05);
+      z-index:100;
+    }
+
     .wrap { max-width:1040px; margin:0 auto; padding:1rem 1.25rem; }
-    nav a { margin-right:.5rem; padding:.5rem .75rem; border-radius:10px; color:var(--fg); text-decoration:none; }
+    nav a {
+      margin-right:.5rem;
+      padding:.5rem .75rem;
+      border-radius:10px;
+      color:var(--fg);
+      text-decoration:none;
+    }
     nav a[aria-current="page"], nav a.is-active { background:#f3f4f6; }
 
-    /* Download button */
+    /* Download button (small, rounded for top nav) */
     .button.nav {
-      display:inline-block;
-      background:#111; color:#fff;
+      display:inline-block; background:#111; color:#fff;
       padding:.55rem .9rem; border-radius:999px; line-height:1;
       text-decoration:none; border:1px solid #111;
     }
@@ -33,16 +61,30 @@
     .card { border:1px solid #e5e7eb; border-radius:16px; background:#fff; }
     footer { border-top:1px solid #eee; margin-top:3rem; }
 
-    h1 { margin:2rem 0 .25rem; font-size:clamp(2rem,4vw,2.75rem); line-height:1.2; font-weight:700; }
+    /* Typography & spacing */
+    h1 {
+      margin: 2rem 0 .25rem;
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      line-height:1.2;
+      font-weight:700;
+    }
     .eyebrow { color:var(--muted); margin:1rem 0 1.5rem 0; }
-    h2 { margin:2rem 0 .75rem; font-size:clamp(1.4rem,3vw,1.75rem); line-height:1.3; font-weight:600; }
-    p { margin:0 0 1.25rem 0; line-height:1.6; }
-    ul { margin:0 0 1.5rem 1.25rem; }
-    li { margin-bottom:.5rem; line-height:1.6; }
+    h2 {
+      margin: 2rem 0 .75rem;
+      font-size: clamp(1.4rem, 3vw, 1.75rem);
+      line-height:1.3;
+      font-weight:600;
+    }
+    p  { margin: 0 0 1.25rem 0; line-height: 1.6; }
+    ul { margin: 0 0 1.5rem 1.25rem; }
+    li { margin-bottom: .5rem; line-height: 1.6; }
 
-    @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+    @media (prefers-reduced-motion:reduce){
+      *{animation:none!important;transition:none!important}
+    }
   </style>
 </head>
+
 <body>
 <header role="banner">
   <div class="wrap" aria-label="Top navigation">
@@ -53,10 +95,71 @@
              border:1px solid rgba(0,0,0,.05);object-fit:cover;">
         <strong style="font-size:1.05rem;color:var(--fg)">Live Read</strong>
       </a>
-
       <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;">
         <nav>
           <a href="index.html" data-nav>Home</a>
           <a href="contact.html" data-nav>Contact</a>
           <a href="privacy.html" data-nav>Privacy</a>
-          <a href="accessibility.html" data-nav aria-current="page" class
+          <a href="accessibility.html" data-nav aria-current="page" class="is-active">Accessibility</a>
+        </nav>
+        <a class="button nav" href="https://apps.apple.com/us/app/live-read/id6749649547"
+           aria-label="Download Live Read on the App Store" rel="noopener">Download</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <main class="wrap" id="main-content" tabindex="-1">
+    <article class="card" style="padding:1.75rem 2rem;">
+      <h1>Accessibility Statement</h1>
+
+      <p class="eyebrow"><strong>Effective Date:</strong> October 2025</p>
+
+      <p>Live Read is designed for people with vision loss. The app is built to work with Apple accessibility features and to meet the intent of <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener">WCAG 2.2 accessibility guidance</a>.</p>
+
+      <h2>Our Commitment</h2>
+      <p>Live Read works naturally with accessibility features to make reading clear, consistent, and easy to control.</p>
+      <ul>
+        <li><strong>VoiceOver:</strong> All controls are labeled and read aloud with clear, concise descriptions.</li>
+        <li><strong>Dynamic Type:</strong> Text automatically scales to match system font size preferences.</li>
+        <li><strong>Contrast and Clarity:</strong> Interface colors and typography follow Apple’s Human Interface Guidelines for legibility.</li>
+        <li><strong>Reduce Motion:</strong> The app honors system settings to limit or remove motion effects.</li>
+        <li><strong>Simple Interaction:</strong> Reading is controlled with a single tap, making the app simple to use.</li>
+      </ul>
+
+      <h2>Feedback</h2>
+      <p>If you experience any accessibility barriers, please <a href="mailto:hello@liveread.app?subject=Accessibility%20Feedback">contact us</a>.</p>
+    </article>
+  </main>
+</div>
+
+<footer role="contentinfo">
+  <div class="wrap">
+    <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;
+         justify-content:space-between;padding:1.25rem 0;">
+      <small>© Live Read 2025. Built for people with vision impairments.</small>
+      <div style="display:flex;gap:.75rem;align-items:center;">
+        <a href="privacy.html" data-nav>Privacy</a>
+        <a href="accessibility.html" data-nav>Accessibility</a>
+        <a href="mailto:hello@liveread.app">hello@liveread.app</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var current = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('[data-nav]').forEach(function(a){
+    var href=a.getAttribute('href');
+    var normalized=href==='/'?'index.html':href.replace(/\\/+$/,'');
+    var match=normalized===current;
+    a.classList.toggle('is-active',match);
+    if(match) a.setAttribute('aria-current','page');
+    else a.removeAttribute('aria-current');
+  });
+})();
+</script>
+</body>
+</html>
