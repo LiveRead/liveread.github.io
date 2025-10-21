@@ -18,6 +18,24 @@
     nav a[aria-current="page"], nav a.is-active { background:#f3f4f6; }
     .card { border:1px solid #e5e7eb; border-radius:16px; background:#fff; }
     footer { border-top:1px solid #eee; margin-top:3rem; }
+
+    /* Typography & spacing to match privacy.html */
+    h1 {
+      margin: 2rem 0 1rem;
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      line-height: 1.2;
+      font-weight: 700;
+    }
+    h2 {
+      margin: 2rem 0 .75rem;
+      font-size: clamp(1.4rem, 3vw, 1.75rem);
+      line-height: 1.3;
+      font-weight: 600;
+    }
+    p { margin: 0 0 1.25rem 0; line-height: 1.6; }
+    ul { margin: 0 0 1.5rem 1.25rem; }
+    li { margin-bottom: .5rem; line-height: 1.6; }
+
     @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
   </style>
 </head>
@@ -42,15 +60,25 @@
 
 <div class="wrap">
   <main class="wrap" id="main-content" tabindex="-1">
-    <article class="card" style="padding:1rem;">
+    <article class="card" style="padding:1.75rem 2rem;">
       <h1>Accessibility Statement</h1>
-      <p>We built Live Read for people with low vision and blindness. The app supports VoiceOver, Dynamic Type, high contrast, and reduced motion. This website aims to meet <strong>WCAG 2.2 AA</strong>.</p>
-      <h2>Feedback</h2>
-      <p>If you encounter a barrier, email us at <a href="mailto:livereadapp@gmail.com">livereadapp@gmail.com</a>. We aim to reply within 5 business days.</p>
-      <h2>Known Limitations</h2>
+      <p><strong>Scope:</strong> Live Read iOS app and the website at liveread.app</p>
+      <p><strong>Conformance target:</strong> WCAG 2.2 Level AA</p>
+      <p><strong>Last reviewed:</strong> October 2025</p>
+
+      <h2>Our commitment</h2>
+      <p>Live Read is designed for people with low vision and blindness. The app supports VoiceOver, Dynamic Type, high contrast, clear touch targets, and reduced motion. The website uses semantic HTML, visible focus states, and keyboard navigation.</p>
+
+      <h2>Compatibility and technical specs</h2>
       <ul>
-        <li>Third-party embeds may not fully meet WCAG criteria.</li>
+        <li>App requires iOS 15 or later on iPhone.</li>
+        <li>Website is tested in Safari, Chrome, and Edge on current macOS and iOS.</li>
+        <li>The site avoids content that flashes more than three times per second.</li>
       </ul>
+
+      <h2>Feedback</h2>
+      <p>If you encounter a barrier, email us and we will respond within five business days.</p>
+      <p>Email: <a href="mailto:hello@liveread.app">hello@liveread.app</a></p>
     </article>
   </main>
 </div>
@@ -62,7 +90,7 @@
       <div style="display:flex;gap:.75rem;align-items:center;">
         <a href="privacy.html" data-nav>Privacy</a>
         <a href="accessibility.html" data-nav>Accessibility</a>
-        <a href="mailto:livereadapp@gmail.com">livereadapp@gmail.com</a>
+        <a href="mailto:hello@liveread.app">hello@liveread.app</a>
       </div>
     </div>
   </div>
