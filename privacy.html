@@ -37,7 +37,6 @@
       line-height: 1.2;
       font-weight: 700;
     }
-
     h2 {
       margin-top: 2rem;
       margin-bottom: 0.75rem;
@@ -45,7 +44,6 @@
       line-height: 1.3;
       font-weight: 600;
     }
-
     p { margin-top: 0; margin-bottom: 1.25rem; line-height: 1.6; }
     ul { margin: 0 0 1.5rem 1.25rem; }
     li { margin-bottom: .5rem; line-height: 1.6; }
@@ -66,7 +64,8 @@
         <nav>
           <a href="index.html" data-nav>Home</a>
           <a href="contact.html" data-nav>Contact</a>
-          <a href="privacy.html" data-nav>Privacy</a>
+          <!-- Pre-mark Privacy as current to guarantee highlight -->
+          <a href="privacy.html" data-nav aria-current="page" class="is-active">Privacy</a>
           <a href="accessibility.html" data-nav>Accessibility</a>
         </nav>
         <a class="button nav" href="https://apps.apple.com/us/app/live-read/id6749649547"
