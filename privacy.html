@@ -115,13 +115,23 @@
   </div>
 </footer>
 
+<!-- Robust nav highlighter -->
 <script>
 (function () {
-  var current = location.pathname.split('/').pop() || 'index.html';
+  // turn a path or href into a simple slug (e.g., "privacy")
+  function slug(s) {
+    if (!s) return 'index';
+    s = s.split('/').pop();            // last segment
+    s = s.replace(/[#?].*$/, '');      // strip query/hash
+    if (!s) s = 'index.html';
+    return s.replace(/\.html?$/i, '').toLowerCase(); // remove extension
+  }
+
+  var current = slug(location.pathname);
+
   document.querySelectorAll('[data-nav]').forEach(function (a) {
-    var href = a.getAttribute('href');
-    var normalized = href === '/' ? 'index.html' : href.replace(/\\/+$/, '');
-    var match = normalized === current;
+    var hrefSlug = slug(a.getAttribute('href') || '');
+    var match = hrefSlug === current;
     a.classList.toggle('is-active', match);
     if (match) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
   });
