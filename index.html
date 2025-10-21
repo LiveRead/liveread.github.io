@@ -7,22 +7,22 @@
   <meta name="description" content="Live Read helps people with vision impairments read printed text aloud instantly.">
   <link rel="icon" type="image/png" href="/favicon.png?v=2">
   <style>
-    :root {
-      --bg:#ffffff; --fg:#0a0a0a; --muted:#4b5563; --brand:#facc15; --accent:#111827;
-    }
+    :root { --bg:#ffffff; --fg:#0a0a0a; --muted:#4b5563; --brand:#facc15; --accent:#111827; }
     html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
 
-    /* Links: obvious and consistent with other pages */
+    /* Links: obvious and consistent */
     a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;transition:color .15s ease}
     a:hover{color:#000;text-decoration-thickness:3px}
     a:focus{outline:3px solid var(--accent);outline-offset:2px;border-radius:8px}
 
-    a.button{display:inline-block;background:var(--fg);color:#fff;padding:.85rem 1.1rem;border-radius:14px;font-weight:600;text-decoration:none;border:1px solid var(--fg)}
-    a.button.secondary{background:transparent;color:var(--fg);border:1px solid #e5e7eb}
-    a.button:hover{filter:brightness(1.05)}
+    /* Buttons */
+    .button{display:inline-block;background:#111;color:#fff;padding:.9rem 1.25rem;border-radius:14px;font-weight:600;text-decoration:none;border:1px solid #111}
+    .button:hover{filter:brightness(1.05)}
+    .button.secondary{background:#f3f4f6;color:#000;border-color:#d1d5db}
+    .button.secondary:hover{background:#e5e7eb}
 
-    /* Skip link for keyboard users */
+    /* Skip link */
     .skip{position:absolute;left:-9999px;top:auto;background:#fff;color:#000;padding:.5rem .75rem;border-radius:10px;border:1px solid #ddd}
     .skip:focus{left:1rem;top:1rem;z-index:2000}
 
@@ -32,20 +32,18 @@
     nav a{margin-right:.5rem;padding:.5rem .75rem;border-radius:10px;color:var(--fg);text-decoration:none}
     nav a[aria-current="page"],nav a.is-active{background:#f3f4f6}
 
+    /* Layout */
     .hero{display:grid;grid-template-columns:1fr;gap:2rem;padding:3rem 0}
+    @media (min-width:900px){ .hero{grid-template-columns:1.1fr .9fr;align-items:center} }
+    .card{border:1px solid #e5e7eb;border-radius:16px;background:#fff}
+    .p{padding:1.25rem 1.5rem}
+
+    /* Type */
     .kicker{color:var(--muted);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:.8rem}
     h1{font-size:clamp(2rem, calc(4vw + 1rem), 3rem);line-height:1.1;margin:.5rem 0 0}
     p.lead{font-size:clamp(1rem,1.2vw + .5rem,1.2rem);color:var(--muted)}
-    .grid-3{display:grid;grid-template-columns:1fr;gap:1rem}
-    .card{border:1px solid #e5e7eb;border-radius:16px;overflow:hidden;background:#fff}
-    .card img{width:100%;height:auto;display:block}
-    .card .p{padding:1rem}
     footer{border-top:1px solid #eee;margin-top:3rem}
 
-    @media (min-width:900px){
-      .hero{grid-template-columns:1.1fr .9fr;align-items:center}
-      .grid-3{grid-template-columns:repeat(3,1fr)}
-    }
     @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
     @media (prefers-contrast:more){a.button{outline:2px solid #000}}
   </style>
@@ -58,13 +56,12 @@
   <div class="wrap" aria-label="Top navigation">
     <div style="display:flex;align-items:center;justify-content:space-between;gap:.5rem;">
       <a href="index.html" style="display:flex;align-items:center;gap:.6rem;text-decoration:none;">
-        <!-- Rounded-square app icon (not circular) -->
         <img src="favicon.png" alt="Live Read logo" width="40" height="40"
              style="border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.15);border:1px solid rgba(0,0,0,.05);object-fit:cover;">
         <strong style="font-size:1.05rem;color:var(--fg)">Live Read</strong>
       </a>
       <nav>
-        <a href="index.html" data-nav>Home</a>
+        <a href="index.html" data-nav aria-current="page" class="is-active">Home</a>
         <a href="contact.html" data-nav>Contact</a>
         <a href="privacy.html" data-nav>Privacy</a>
         <a href="accessibility.html" data-nav>Accessibility</a>
@@ -75,6 +72,7 @@
 
 <div class="wrap">
   <main id="main" tabindex="-1">
+    <!-- Hero with single image -->
     <section class="hero" aria-labelledby="hero-title">
       <div>
         <div class="kicker">Designed for people with low vision</div>
@@ -85,35 +83,29 @@
           <a class="button secondary" href="contact.html">Contact us</a>
         </div>
       </div>
-      <figure class="card">
-        <img src="hero-1.jpg" alt="An iPhone view reading 'Tomato Soup' aloud with a speech bubble showing recognized text." loading="eager">
+      <figure class="card" style="overflow:hidden;">
+        <img src="hero-1.jpg" alt="Live Read reads a Tomato Soup label aloud with recognized text visible on screen." loading="eager" style="display:block;width:100%;height:auto;">
       </figure>
     </section>
 
-    <section aria-labelledby="features-title">
-      <h2 id="features-title" style="font-size:1.5rem;margin:1rem 0;">How it works</h2>
-      <div class="grid-3">
-        <figure class="card">
-          <img src="hero-3.jpg" alt="Instruction reading: Tap anywhere to stop the speech. Swipe to skip lines of text." loading="lazy">
-          <figcaption class="p">Tap to pause speech. Swipe to move through lines of text.</figcaption>
-        </figure>
-        <figure class="card">
-          <img src="hero-2.jpg" alt="Settings screen showing Speaking Rate and Voice options for Live Read." loading="lazy">
-          <figcaption class="p">Adjust reading speed and voice to your preference.</figcaption>
-        </figure>
-        <div class="card">
-          <div class="p">
-            <h3 style="margin:.25rem 0;">Private, fast, and simple</h3>
-            <p>Live Read runs on-device. Point your camera at text and hear it read aloud. No menus to navigate, no sign-up required.</p>
-            <ul>
-              <li>Optimized for VoiceOver</li>
-              <li>Works offline after install</li>
-              <li>Clear, large type throughout</li>
-            </ul>
-            <p><a class="button" href="https://apps.apple.com/us/app/live-read/id6749649547" rel="noopener">Get Live Read</a></p>
-          </div>
-        </div>
-      </div>
+    <!-- Text-only sections -->
+    <section class="card p" aria-labelledby="how-title">
+      <h2 id="how-title" style="font-size:1.5rem;margin:0 0 .75rem;">How it works</h2>
+      <ul style="margin:.25rem 0 0 1.25rem;">
+        <li>Open Live Read and point the camera at the text.</li>
+        <li>Tap once to start or stop reading.</li>
+        <li>Adjust speaking rate and voice in system settings.</li>
+      </ul>
+    </section>
+
+    <section class="card p" style="margin-top:1rem;" aria-labelledby="why-title">
+      <h2 id="why-title" style="font-size:1.5rem;margin:0 0 .75rem;">Why Live Read</h2>
+      <ul style="margin:.25rem 0 0 1.25rem;">
+        <li><strong>Simple interaction.</strong> A single tap controls reading so it stays easy to use.</li>
+        <li><strong>Works with accessibility.</strong> VoiceOver labels, Dynamic Type, high contrast, and reduced motion.</li>
+        <li><strong>Privacy first.</strong> Text recognition runs on your device. No account required.</li>
+      </ul>
+      <p style="margin-top:.75rem;"><a href="privacy.html">Read our privacy policy</a></p>
     </section>
   </main>
 </div>
@@ -131,13 +123,12 @@
   </div>
 </footer>
 
-<!-- Active-link highlighter -->
 <script>
 (function () {
   var current = location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('[data-nav]').forEach(function (a) {
     var href = a.getAttribute('href');
-    var normalized = href === '/' ? 'index.html' : href.replace(/\/+$/, '');
+    var normalized = href === '/' ? 'index.html' : href.replace(/\\/+$/, '');
     var match = normalized === current;
     a.classList.toggle('is-active', match);
     if (match) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
