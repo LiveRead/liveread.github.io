@@ -7,31 +7,101 @@
   <meta name="description" content="Accessibility statement for the Live Read app and website.">
   <link rel="icon" type="image/png" href="/favicon.png?v=2">
   <style>
-    :root { --bg:#ffffff; --fg:#0a0a0a; --muted:#4b5563; --brand:#facc15; --accent:#111827; }
-    html, body { margin:0; padding:0; background:var(--bg); color:var(--fg);
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
-    a { color:var(--accent); text-decoration:underline; text-underline-offset:2px; }
-    a:focus { outline:3px solid var(--accent); outline-offset:2px; border-radius:8px; }
-    .button { display:inline-block; background:var(--fg); color:#fff; padding:.85rem 1.1rem;
-      border-radius:14px; font-weight:600; text-decoration:none; }
-    .button:focus { outline:3px solid var(--accent); outline-offset:2px; }
+    :root {
+      --bg:#ffffff;
+      --fg:#0a0a0a;
+      --muted:#4b5563;
+      --brand:#facc15;
+      --accent:#111827;
+    }
+    html, body {
+      margin:0; padding:0;
+      background:var(--bg); color:var(--fg);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    }
 
-    header { position:sticky; top:0; background:rgba(255,255,255,.9);
+    /* Visually clear link styling */
+    a {
+      color:var(--accent);
+      text-decoration:underline;
+      text-underline-offset:3px;
+      font-weight:500;
+      transition:color .15s ease;
+    }
+    a:hover {
+      color:#000;
+      text-decoration-thickness:3px;
+    }
+    a:focus {
+      outline:3px solid var(--accent);
+      outline-offset:2px;
+      border-radius:8px;
+    }
+
+    /* Button styling */
+    .button {
+      display:inline-block;
+      background:#f3f4f6;
+      color:#000;
+      padding:.85rem 1.25rem;
+      border-radius:14px;
+      font-weight:600;
+      text-decoration:none;
+      border:1px solid #d1d5db;
+      box-shadow:0 1px 2px rgba(0,0,0,.05);
+      transition:background .2s ease, box-shadow .2s ease;
+    }
+    .button:hover {
+      background:#e5e7eb;
+      box-shadow:0 2px 4px rgba(0,0,0,.08);
+    }
+    .button:focus {
+      outline:3px solid var(--accent);
+      outline-offset:2px;
+    }
+
+    header {
+      position:sticky; top:0;
+      background:rgba(255,255,255,.9);
       backdrop-filter:saturate(150%) blur(6px);
-      border-bottom:1px solid #eee; box-shadow:0 1px 2px rgba(0,0,0,.05); z-index:100; }
+      border-bottom:1px solid #eee;
+      box-shadow:0 1px 2px rgba(0,0,0,.05);
+      z-index:100;
+    }
+
     .wrap { max-width:1040px; margin:0 auto; padding:1rem 1.25rem; }
-    nav a { margin-right:.5rem; padding:.5rem .75rem; border-radius:10px; color:var(--fg);
-      text-decoration:none; }
+    nav a {
+      margin-right:.5rem;
+      padding:.5rem .75rem;
+      border-radius:10px;
+      color:var(--fg);
+      text-decoration:none;
+    }
     nav a[aria-current="page"], nav a.is-active { background:#f3f4f6; }
     .card { border:1px solid #e5e7eb; border-radius:16px; background:#fff; }
     footer { border-top:1px solid #eee; margin-top:3rem; }
 
-    h1 { margin: 2rem 0 .25rem; font-size: clamp(2rem, 4vw, 2.75rem);
-      line-height:1.2; font-weight:700; }
-    .eyebrow { color:var(--muted); margin:1rem 0 1.5rem 0; }
-    h2 { margin: 2rem 0 .75rem; font-size: clamp(1.4rem, 3vw, 1.75rem);
-      line-height:1.3; font-weight:600; }
-    p  { margin: 0 0 1.25rem 0; line-height: 1.6; }
+    /* Typography & spacing */
+    h1 {
+      margin: 2rem 0 .25rem;
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      line-height:1.2;
+      font-weight:700;
+    }
+    .eyebrow {
+      color:var(--muted);
+      margin:1rem 0 1.5rem 0;
+    }
+    h2 {
+      margin: 2rem 0 .75rem;
+      font-size: clamp(1.4rem, 3vw, 1.75rem);
+      line-height:1.3;
+      font-weight:600;
+    }
+    p {
+      margin: 0 0 1.25rem 0;
+      line-height: 1.6;
+    }
     ul { margin: 0 0 1.5rem 1.25rem; }
     li { margin-bottom: .5rem; line-height: 1.6; }
 
@@ -40,6 +110,7 @@
     }
   </style>
 </head>
+
 <body>
 <header role="banner">
   <div class="wrap" aria-label="Top navigation">
@@ -64,22 +135,24 @@
   <main class="wrap" id="main-content" tabindex="-1">
     <article class="card" style="padding:1.75rem 2rem;">
       <h1>Accessibility Statement</h1>
+
       <p class="eyebrow"><strong>Effective Date:</strong> October 2025</p>
 
-      <p>We built Live Read to be usable by everyone, including people with vision loss. The app supports VoiceOver, Dynamic Type, high contrast, clear touch targets, and reduced motion. This website follows <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 accessibility guidance</a>.</p>
+      <p>Live Read is designed for people with vision loss and low vision. The app is built to work seamlessly with iPhone accessibility features and to meet the intent of <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener">WCAG 2.2 accessibility guidance</a>.</p>
 
       <h2>Our Commitment</h2>
-      <p>Live Read was created with accessibility at its core. Every feature—from camera text reading to spoken output—is designed to work smoothly with iOS accessibility settings.</p>
+      <p>Accessibility is central to Live Read’s purpose. Every feature—from camera recognition to spoken output—is designed to support users who rely on assistive technology.</p>
       <ul>
-        <li><strong>VoiceOver Support:</strong> The entire interface and all controls are labeled for screen readers.</li>
-        <li><strong>Large Text:</strong> Fonts automatically scale with the user’s preferred text size.</li>
-        <li><strong>High Contrast:</strong> Colors and iconography meet Apple contrast recommendations for visibility.</li>
-        <li><strong>Reduce Motion:</strong> The app respects system preferences to minimize or disable animations.</li>
-        <li><strong>Simple Controls:</strong> One-tap operation and optional gestures allow use without complex menus.</li>
+        <li><strong>VoiceOver:</strong> All controls are labeled and read aloud with clear, concise descriptions.</li>
+        <li><strong>Dynamic Type:</strong> Text automatically scales to match system font size preferences.</li>
+        <li><strong>Contrast and Clarity:</strong> Interface colors and typography follow Apple’s Human Interface Guidelines for legibility.</li>
+        <li><strong>Reduce Motion:</strong> The app honors system settings to limit or remove motion effects.</li>
+        <li><strong>Simple Interaction:</strong> One tap starts or stops reading; no complex gestures are required.</li>
       </ul>
 
       <h2>Feedback</h2>
-      <p>If you encounter a barrier, please contact us. We respond within five business days.</p>
+      <p>If you experience any accessibility barriers, please contact us. We typically respond within five business days.</p>
+
       <p><a class="button" href="mailto:hello@liveread.app?subject=Accessibility%20Feedback">Email us</a></p>
     </article>
   </main>
