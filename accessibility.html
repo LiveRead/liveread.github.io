@@ -56,7 +56,11 @@
       padding:.55rem .9rem; border-radius:999px; line-height:1;
       text-decoration:none; border:1px solid #111;
     }
-    .button.nav:hover { filter:brightness(1.05); }
+    .button.nav:hover {
+  background:#000;         /* keep it dark on hover */
+  color:#fff;              /* ensure text stays white */
+  border-color:#000;       /* match the darker background */
+}
 
     .card { border:1px solid #e5e7eb; border-radius:16px; background:#fff; }
     footer { border-top:1px solid #eee; margin-top:3rem; }
