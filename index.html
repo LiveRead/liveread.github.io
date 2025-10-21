@@ -22,6 +22,10 @@
     .button.secondary{background:#f3f4f6;color:#000;border-color:#d1d5db}
     .button.secondary:hover{background:#e5e7eb}
 
+    /* Small button for nav */
+    .button.nav{padding:.55rem .9rem;border-radius:999px; line-height:1; text-decoration:none}
+    .button.nav:focus{outline:3px solid var(--brand);outline-offset:2px}
+
     /* Skip link */
     .skip{position:absolute;left:-9999px;top:auto;background:#fff;color:#000;padding:.5rem .75rem;border-radius:10px;border:1px solid #ddd}
     .skip:focus{left:1rem;top:1rem;z-index:2000}
@@ -60,12 +64,19 @@
              style="border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.15);border:1px solid rgba(0,0,0,.05);object-fit:cover;">
         <strong style="font-size:1.05rem;color:var(--fg)">Live Read</strong>
       </a>
-      <nav>
-        <a href="index.html" data-nav aria-current="page" class="is-active">Home</a>
+
+      <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;">
+        <nav>
+          <a href="index.html" data-nav aria-current="page" class="is-active">Home</a>
         <a href="contact.html" data-nav>Contact</a>
         <a href="privacy.html" data-nav>Privacy</a>
         <a href="accessibility.html" data-nav>Accessibility</a>
-      </nav>
+        </nav>
+
+        <!-- Download button in the top bar (external, not part of active-page highlighting) -->
+        <a class="button nav" href="https://apps.apple.com/us/app/live-read/id6749649547"
+           aria-label="Download Live Read on the App Store" rel="noopener">Download</a>
+      </div>
     </div>
   </div>
 </header>
