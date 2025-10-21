@@ -11,6 +11,7 @@
     html, body { margin:0; padding:0; background:var(--bg); color:var(--fg);
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
     a { color:var(--accent); text-decoration:none; }
+    a.button { display:inline-block; background:var(--fg); color:#fff; padding:.85rem 1.1rem; border-radius:14px; font-weight:600; }
     header { position:sticky; top:0; background:rgba(255,255,255,.9); backdrop-filter:saturate(150%) blur(6px);
       border-bottom:1px solid #eee; box-shadow:0 1px 2px rgba(0,0,0,.05); z-index:100; }
     .wrap { max-width:1040px; margin:0 auto; padding:1rem 1.25rem; }
@@ -19,20 +20,10 @@
     .card { border:1px solid #e5e7eb; border-radius:16px; background:#fff; }
     footer { border-top:1px solid #eee; margin-top:3rem; }
 
-    /* Typography & spacing to match privacy.html */
-    h1 {
-      margin: 2rem 0 1rem;
-      font-size: clamp(2rem, 4vw, 2.75rem);
-      line-height: 1.2;
-      font-weight: 700;
-    }
-    h2 {
-      margin: 2rem 0 .75rem;
-      font-size: clamp(1.4rem, 3vw, 1.75rem);
-      line-height: 1.3;
-      font-weight: 600;
-    }
-    p { margin: 0 0 1.25rem 0; line-height: 1.6; }
+    /* Typography & spacing */
+    h1 { margin: 2rem 0 1rem; font-size: clamp(2rem, 4vw, 2.75rem); line-height:1.2; font-weight:700; }
+    h2 { margin: 2rem 0 .75rem; font-size: clamp(1.4rem, 3vw, 1.75rem); line-height:1.3; font-weight:600; }
+    p  { margin: 0 0 1.25rem 0; line-height: 1.6; }
     ul { margin: 0 0 1.5rem 1.25rem; }
     li { margin-bottom: .5rem; line-height: 1.6; }
 
@@ -52,7 +43,7 @@
         <a href="index.html" data-nav>Home</a>
         <a href="contact.html" data-nav>Contact</a>
         <a href="privacy.html" data-nav>Privacy</a>
-        <a href="accessibility.html" data-nav>Accessibility</a>
+        <a href="accessibility.html" data-nav aria-current="page" class="is-active">Accessibility</a>
       </nav>
     </div>
   </div>
@@ -62,23 +53,20 @@
   <main class="wrap" id="main-content" tabindex="-1">
     <article class="card" style="padding:1.75rem 2rem;">
       <h1>Accessibility Statement</h1>
-      <p><strong>Scope:</strong> Live Read iOS app and the website at liveread.app</p>
-      <p><strong>Conformance target:</strong> WCAG 2.2 Level AA</p>
-      <p><strong>Last reviewed:</strong> October 2025</p>
+      <p>We built Live Read for people with low vision and blindness. The app supports VoiceOver, Dynamic Type, high contrast, clear touch targets, and reduced motion. This website is designed to follow <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 guidance</a>.</p>
 
       <h2>Our commitment</h2>
-      <p>Live Read is designed for people with low vision and blindness. The app supports VoiceOver, Dynamic Type, high contrast, clear touch targets, and reduced motion. The website uses semantic HTML, visible focus states, and keyboard navigation.</p>
-
-      <h2>Compatibility and technical specs</h2>
-      <ul>
-        <li>App requires iOS 15 or later on iPhone.</li>
-        <li>Website is tested in Safari, Chrome, and Edge on current macOS and iOS.</li>
-        <li>The site avoids content that flashes more than three times per second.</li>
-      </ul>
+      <p>We aim to make Live Read simple, readable, and usable with assistive technologies. We use semantic HTML, visible keyboard focus, and text and color choices that support readability.</p>
 
       <h2>Feedback</h2>
-      <p>If you encounter a barrier, email us and we will respond within five business days.</p>
-      <p>Email: <a href="mailto:hello@liveread.app">hello@liveread.app</a></p>
+      <p>If you encounter a barrier, please contact us. We will reply within five business days.</p>
+      <p>
+        <a class="button" href="mailto:hello@liveread.app?subject=Accessibility%20feedback">Email us</a>
+        <br>
+        or write to <a href="mailto:hello@liveread.app">hello@liveread.app</a>
+      </p>
+
+      <p><small>Last reviewed: October 2025</small></p>
     </article>
   </main>
 </div>
