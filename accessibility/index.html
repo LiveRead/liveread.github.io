@@ -7,27 +7,15 @@
   <meta name="description" content="Accessibility statement for the Live Read app and website.">
   <link rel="icon" type="image/png" href="/favicon.png?v=2">
   <style>
-    :root {
-      --bg:#ffffff;
-      --fg:#0a0a0a;
-      --muted:#4b5563;
-      --brand:#facc15;
-      --accent:#111827;
-    }
+    :root { --bg:#ffffff; --fg:#0a0a0a; --muted:#4b5563; --brand:#facc15; --accent:#111827; }
     html, body {
       margin:0; padding:0;
       background:var(--bg); color:var(--fg);
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     }
 
-    /* Visually clear link styling */
-    a {
-      color:var(--accent);
-      text-decoration:underline;
-      text-underline-offset:3px;
-      font-weight:500;
-      transition:color .15s ease;
-    }
+    /* Links */
+    a { color:var(--accent); text-decoration:underline; text-underline-offset:3px; font-weight:500; transition:color .15s ease; }
     a:hover { color:#000; text-decoration-thickness:3px; }
     a:focus { outline:3px solid var(--accent); outline-offset:2px; border-radius:8px; }
 
@@ -55,12 +43,9 @@
       display:inline-block; background:#111; color:#fff;
       padding:.55rem .9rem; border-radius:999px; line-height:1;
       text-decoration:none; border:1px solid #111;
+      transition:filter .15s ease;
     }
-    .button.nav:hover {
-  background:#000;         /* keep it dark on hover */
-  color:#fff;              /* ensure text stays white */
-  border-color:#000;       /* match the darker background */
-}
+    .button.nav:hover { filter:brightness(1.05); }
 
     .card { border:1px solid #e5e7eb; border-radius:16px; background:#fff; }
     footer { border-top:1px solid #eee; margin-top:3rem; }
@@ -93,18 +78,18 @@
 <header role="banner">
   <div class="wrap" aria-label="Top navigation">
     <div style="display:flex;align-items:center;justify-content:space-between;gap:.5rem;">
-      <a href="index.html" style="display:flex;align-items:center;gap:.6rem;text-decoration:none;">
-        <img src="favicon.png" alt="Live Read logo" width="40" height="40"
-             style="border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.15);
-             border:1px solid rgba(0,0,0,.05);object-fit:cover;">
+      <a href="/" style="display:flex;align-items:center;gap:.6rem;text-decoration:none;">
+        <img src="/favicon.png" alt="Live Read logo" width="40" height="40"
+             style="border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.15);border:1px solid rgba(0,0,0,.05);object-fit:cover;">
         <strong style="font-size:1.05rem;color:var(--fg)">Live Read</strong>
       </a>
       <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;">
         <nav>
-          <a href="index.html" data-nav>Home</a>
-          <a href="contact.html" data-nav>Contact</a>
-          <a href="privacy.html" data-nav>Privacy</a>
-          <a href="accessibility.html" data-nav aria-current="page" class="is-active">Accessibility</a>
+          <a href="/" data-nav>Home</a>
+          <a href="/contact/" data-nav>Contact</a>
+          <a href="/privacy/" data-nav>Privacy</a>
+          <a href="/accessibility/" data-nav aria-current="page" class="is-active">Accessibility</a>
+          <a href="/support/" data-nav>Support</a>
         </nav>
         <a class="button nav" href="https://apps.apple.com/us/app/live-read/id6749649547"
            aria-label="Download Live Read on the App Store" rel="noopener">Download</a>
@@ -114,10 +99,9 @@
 </header>
 
 <div class="wrap">
-  <main class="wrap" id="main-content" tabindex="-1">
+  <main id="main-content" tabindex="-1">
     <article class="card" style="padding:1.75rem 2rem;">
       <h1>Accessibility Statement</h1>
-
       <p class="eyebrow"><strong>Effective Date:</strong> October 2025</p>
 
       <p>Live Read is designed for people with vision loss. The app is built to work with Apple accessibility features and to meet the intent of <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener">WCAG 2.2 accessibility guidance</a>.</p>
@@ -140,12 +124,11 @@
 
 <footer role="contentinfo">
   <div class="wrap">
-    <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;
-         justify-content:space-between;padding:1.25rem 0;">
+    <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;justify-content:space-between;padding:1.25rem 0;">
       <small>© Live Read 2025. Built for people with vision impairments.</small>
       <div style="display:flex;gap:.75rem;align-items:center;">
-        <a href="privacy.html" data-nav>Privacy</a>
-        <a href="accessibility.html" data-nav>Accessibility</a>
+        <a href="/privacy/" data-nav>Privacy</a>
+        <a href="/accessibility/" data-nav aria-current="page" class="is-active">Accessibility</a>
         <a href="mailto:hello@liveread.app">hello@liveread.app</a>
       </div>
     </div>
@@ -153,15 +136,21 @@
 </footer>
 
 <script>
-(function(){
-  var current = location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('[data-nav]').forEach(function(a){
-    var href=a.getAttribute('href');
-    var normalized=href==='/'?'index.html':href.replace(/\\/+$/,'');
-    var match=normalized===current;
-    a.classList.toggle('is-active',match);
-    if(match) a.setAttribute('aria-current','page');
-    else a.removeAttribute('aria-current');
+/* Clean-URL nav highlighter: works for /, /privacy/, /accessibility/, etc. */
+(function () {
+  function slug(path) {
+    if (!path) return 'index';
+    path = path.replace(/[#?].*$/, '');
+    if (path === '/' || path === '') return 'index';
+    if (path.endsWith('/')) path = path.slice(0, -1);
+    return path.split('/').pop().toLowerCase();
+  }
+  var current = slug(location.pathname);
+  document.querySelectorAll('[data-nav]').forEach(function (a) {
+    var href = a.getAttribute('href') || '/';
+    var match = slug(href) === current;
+    a.classList.toggle('is-active', match);
+    if (match) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
   });
 })();
 </script>
