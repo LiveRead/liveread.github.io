@@ -28,33 +28,15 @@
       border:1px solid #111;
       transition:background .15s ease, border-color .15s ease, color .15s ease;
     }
-    .button:hover{
-      background:#000;       /* stay dark on hover */
-      border-color:#000;
-      color:#fff;            /* keep text white */
-    }
-    .button.secondary{
-      background:#f3f4f6;
-      color:#000;
-      border-color:#d1d5db;
-    }
-    .button.secondary:hover{
-      background:#e5e7eb;
-    }
+    .button:hover{ background:#000; border-color:#000; color:#fff; }
+    .button.secondary{ background:#f3f4f6; color:#000; border-color:#d1d5db; }
+    .button.secondary:hover{ background:#e5e7eb; }
 
-    /* Small button for nav */
     .button.nav{
-      padding:.55rem .9rem;
-      border-radius:999px;
-      line-height:1;
-      text-decoration:none;
+      padding:.55rem .9rem; border-radius:999px; line-height:1; text-decoration:none;
     }
-    .button.nav:hover{
-      background:#000;
-      border-color:#000;
-      color:#fff;
-    }
-    .button.nav:focus{outline:3px solid var(--brand);outline-offset:2px}
+    .button.nav:hover{ background:#000; border-color:#000; color:#fff; }
+    .button.nav:focus{ outline:3px solid var(--brand); outline-offset:2px; }
 
     /* Skip link */
     .skip{position:absolute;left:-9999px;top:auto;background:#fff;color:#000;padding:.5rem .75rem;border-radius:10px;border:1px solid #ddd}
@@ -89,21 +71,22 @@
 <header role="banner">
   <div class="wrap" aria-label="Top navigation">
     <div style="display:flex;align-items:center;justify-content:space-between;gap:.5rem;">
-      <a href="index.html" style="display:flex;align-items:center;gap:.6rem;text-decoration:none;">
-        <img src="favicon.png" alt="Live Read logo" width="40" height="40"
+      <!-- Logo/brand always links to site root -->
+      <a href="/" style="display:flex;align-items:center;gap:.6rem;text-decoration:none;">
+        <img src="/favicon.png" alt="Live Read logo" width="40" height="40"
              style="border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.15);border:1px solid rgba(0,0,0,.05);object-fit:cover;">
         <strong style="font-size:1.05rem;color:var(--fg)">Live Read</strong>
       </a>
 
       <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;">
         <nav>
-          <a href="index.html" data-nav aria-current="page" class="is-active">Home</a>
-          <a href="contact.html" data-nav>Contact</a>
-          <a href="privacy.html" data-nav>Privacy</a>
-          <a href="accessibility.html" data-nav>Accessibility</a>
+          <!-- Clean URLs; Home points to root / -->
+          <a href="/" data-nav>Home</a>
+          <a href="/contact" data-nav>Contact</a>
+          <a href="/privacy" data-nav>Privacy</a>
+          <a href="/accessibility" data-nav>Accessibility</a>
         </nav>
 
-        <!-- Download button in the top bar -->
         <a class="button nav" href="https://apps.apple.com/us/app/live-read/id6749649547"
            aria-label="Download Live Read on the App Store" rel="noopener">Download</a>
       </div>
@@ -120,11 +103,11 @@
         <p class="lead">Live Read helps people with vision impairments read printed labels, menus, mail, and more. Instantly, with clear spoken feedback.</p>
         <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem;">
           <a class="button" href="https://apps.apple.com/us/app/live-read/id6749649547" aria-label="Download Live Read on the App Store" rel="noopener">Download on the App Store</a>
-          <a class="button secondary" href="contact.html">Contact us</a>
+          <a class="button secondary" href="/contact">Contact us</a>
         </div>
       </div>
       <figure class="card" style="overflow:hidden;">
-        <img src="hero-1.jpg" alt="Live Read reads a Tomato Soup label aloud with recognized text visible on screen." loading="eager" style="display:block;width:100%;height:auto;">
+        <img src="/hero-1.jpg" alt="Live Read reads a Tomato Soup label aloud with recognized text visible on screen." loading="eager" style="display:block;width:100%;height:auto;">
       </figure>
     </section>
 
@@ -153,8 +136,8 @@
     <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;justify-content:space-between;padding:1.25rem 0;">
       <small>© Live Read 2025. Built for people with vision impairments.</small>
       <div style="display:flex;gap:.75rem;align-items:center;">
-        <a href="privacy.html" data-nav>Privacy</a>
-        <a href="accessibility.html" data-nav>Accessibility</a>
+        <a href="/privacy" data-nav>Privacy</a>
+        <a href="/accessibility" data-nav>Accessibility</a>
         <a href="mailto:livereadapp@gmail.com">livereadapp@gmail.com</a>
       </div>
     </div>
@@ -162,14 +145,16 @@
 </footer>
 
 <script>
+/* Activate current nav link using clean URLs (/, /contact, etc.) */
 (function () {
-  var current = location.pathname.split('/').pop() || 'index.html';
+  // Normalize path: strip trailing slash except for root
+  var path = location.pathname.replace(/\/+$/, '') || '/';
   document.querySelectorAll('[data-nav]').forEach(function (a) {
-    var href = a.getAttribute('href');
-    var normalized = href === '/' ? 'index.html' : href.replace(/\\/+$/, '');
-    var match = normalized === current;
-    a.classList.toggle('is-active', match);
-    if (match) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+    var href = a.getAttribute('href') || '';
+    var target = href.replace(/\/+$/, '') || '/';
+    var isMatch = (path === target);
+    a.classList.toggle('is-active', isMatch);
+    if (isMatch) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
   });
 })();
 </script>
