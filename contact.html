@@ -16,7 +16,7 @@ layout: none
     html, body { margin:0; padding:0; background:var(--bg); color:var(--fg);
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
 
-    /* Links (no underline by default to match your style) */
+    /* Links (no underline by default to match site style) */
     a { color:var(--accent); text-decoration:none; font-weight:500; transition:color .15s ease; }
     a:hover { text-decoration:underline; color:#000; }
     a:focus { outline:3px solid var(--accent); outline-offset:2px; border-radius:8px; }
@@ -57,13 +57,22 @@ layout: none
     .brand{display:flex;align-items:center;gap:.6rem;text-decoration:none}
     .actions{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
 
-    /* Make the header wrap nicely on small iPhones */
+    /* Google Form iframe wrapper */
+    .form-embed{max-width:820px}             /* keeps the form a comfortable width */
+    .form-embed iframe{
+      width:100%;
+      height:1300px;                         /* good starting height for your form */
+      border:0;
+    }
+
+    /* Make the header + form play nicely on small iPhones */
     @media (max-width: 600px){
       .actions{ width:100%; justify-content:space-between; gap:.5rem; }
       nav{ display:flex; flex-wrap:wrap; gap:.25rem .5rem; }
       nav a{ padding:.45rem .6rem; margin-right:0; }
       .button.nav{ flex:1 0 auto; text-align:center; }
       .brand img{ width:36px; height:36px; }
+      .form-embed iframe{ height:1500px; }  /* nudge taller on mobile to reduce internal scrolling */
     }
 
     @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -103,11 +112,18 @@ layout: none
   <main class="wrap" id="main-content" tabindex="-1">
     <article class="card" style="padding:1.75rem 2rem;">
       <h1>Contact</h1>
-      <p>Contact us by email for questions, feedback, or app support.</p>
-      <p>
-        <a class="button" href="mailto:hello@liveread.app?subject=Live%20Read%20Support">
-          Email hello@liveread.app
-        </a>
+      <p>Send us a message below. You’ll receive a copy of your submission by email.</p>
+
+      <div class="form-embed">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSdxUYNsCw4R7D9vUzttQqWHRxoJlqnllNO8RapgEYqiagh80w/viewform?embedded=true"
+          loading="lazy" frameborder="0" marginheight="0" marginwidth="0">
+          Loading…
+        </iframe>
+      </div>
+
+      <p style="margin-top:1rem;color:var(--muted);">
+        Prefer email? <a href="mailto:hello@liveread.app?subject=Live%20Read%20Support">hello@liveread.app</a>
       </p>
     </article>
   </main>
