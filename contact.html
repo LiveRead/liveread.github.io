@@ -8,6 +8,8 @@ layout: none
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live Read — Contact</title>
+  <meta name="description" content="Contact the Live Read team for questions, feedback, or support.">
   <link rel="icon" type="image/png" href="/favicon.png?v=2">
   <style>
     :root { --bg:#ffffff; --fg:#0a0a0a; --muted:#4b5563; --brand:#facc15; --accent:#111827; }
@@ -42,13 +44,14 @@ layout: none
     p  { margin:0 0 1.25rem 0; line-height:1.6; font-size:1.05rem; }
 
     /* Responsive embed wrapper */
-    .form-wrap { position:relative; padding-top:0; }
-    #ff-compose { width:100%; min-height:1200px; }
+    .form-wrap { position:relative; padding-top:0; margin-bottom:0; } /* tighten space below form */
+    #ff-compose { width:100%; min-height:1200px; margin-bottom:-1.25rem; } /* pull “Prefer email?” up a bit */
 
     @media (max-width:600px){
       header nav { flex-wrap:wrap; gap:.25rem; }
       nav a { padding:.4rem .6rem; margin-right:0; }
       .button.nav { flex:1 0 auto; text-align:center; }
+      #ff-compose { min-height:1350px; } /* give the form more room on small screens */
     }
   </style>
 </head>
@@ -81,6 +84,8 @@ layout: none
 <div class="wrap">
   <main id="main-content" tabindex="-1">
     <article class="card" style="padding:1.75rem 2rem;">
+      <h1>Contact</h1>
+
       <div class="form-wrap">
         <div id="ff-compose"></div>
         <script async defer src="https://formfacade.com/include/117726141970426439040/form/1FAIpQLSdxUYNsCw4R7D9vUzttQqWHRxoJlqnllNO8RapgEYqiagh80w/classic.js?div=ff-compose"></script>
