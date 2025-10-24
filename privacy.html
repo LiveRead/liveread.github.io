@@ -32,11 +32,18 @@ layout: none
       display:inline-block; background:#111; color:#fff;
       padding:.55rem .9rem; border-radius:999px; line-height:1;
       text-decoration:none; border:1px solid #111;
+      transition:background .15s ease, border-color .15s ease, color .15s ease;
     }
-    .button.nav:hover { filter:brightness(1.05); }
+    .button.nav:hover { background:#000; border-color:#000; color:#fff; }
+    .button.nav:focus { outline:3px solid var(--brand); outline-offset:2px; }
 
     .card { border:1px solid #e5e7eb; border-radius:16px; background:#fff; }
     footer { border-top:1px solid #eee; margin-top:3rem; }
+
+    /* Header layout helpers (responsive) */
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:.5rem;flex-wrap:wrap}
+    .brand{display:flex;align-items:center;gap:.6rem;text-decoration:none}
+    .actions{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
 
     /* Typography & spacing (from the older version) */
     h1 {
@@ -56,23 +63,31 @@ layout: none
     p { margin-top: 0; margin-bottom: 1.25rem; line-height: 1.6; }
     ul { margin: 0 0 1.5rem 1.25rem; }
     li { margin-bottom: .5rem; line-height: 1.6; }
+
+    /* Make the header wrap nicely on small iPhones */
+    @media (max-width: 600px){
+      .actions{ width:100%; justify-content:space-between; gap:.5rem; }
+      nav{ display:flex; flex-wrap:wrap; gap:.25rem .5rem; }
+      nav a{ padding:.45rem .6rem; margin-right:0; }
+      .button.nav{ flex:1 0 auto; text-align:center; }
+      .brand img{ width:36px; height:36px; }
+    }
   </style>
 </head>
 
 <body>
 <header role="banner">
   <div class="wrap" aria-label="Top navigation">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:.5rem;">
-      <a href="/" style="display:flex;align-items:center;gap:.6rem;text-decoration:none;">
+    <div class="topbar">
+      <a class="brand" href="/">
         <img src="/favicon.png" alt="Live Read logo" width="40" height="40"
              style="border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.15);
                     border:1px solid rgba(0,0,0,.05);object-fit:cover;">
         <strong style="font-size:1.05rem;color:var(--fg)">Live Read</strong>
       </a>
 
-      <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;">
+      <div class="actions">
         <nav>
-          <!-- Clean URLs (no .html) but same visual style as older version -->
           <a href="/" data-nav>Home</a>
           <a href="/contact" data-nav>Contact</a>
           <a href="/privacy" data-nav aria-current="page" class="is-active">Privacy</a>
@@ -127,18 +142,14 @@ layout: none
 <!-- Robust nav highlighter from the older version, updated to support clean URLs -->
 <script>
 (function () {
-  // Turn a path or href into a comparable slug (e.g., "/" -> "index", "/privacy" -> "privacy")
   function slug(s) {
     if (!s) return 'index';
-    // if it's a full path like "/privacy" keep last segment; if it's a file like "privacy.html", handle that too
-    s = ('' + s).split('/').pop();           // last segment
-    s = s.replace(/[#?].*$/, '');            // strip query/hash
+    s = ('' + s).split('/').pop();   // last segment
+    s = s.replace(/[#?].*$/, '');    // strip query/hash
     if (!s) s = 'index.html';
     return s.replace(/\.html?$/i, '').toLowerCase() || 'index';
   }
-
   var current = slug(location.pathname);
-
   document.querySelectorAll('[data-nav]').forEach(function (a) {
     var hrefSlug = slug(a.getAttribute('href') || '');
     var match = hrefSlug === current;
