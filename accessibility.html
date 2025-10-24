@@ -1,0 +1,63 @@
+---
+permalink: /accessibility
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live Read — Accessibility</title>
+  <meta name="description" content="Accessibility statement for the Live Read app and website.">
+  <link rel="icon" type="image/png" href="/favicon.png?v=2">
+  <style>
+    :root { --bg:#ffffff; --fg:#0a0a0a; --muted:#4b5563; --brand:#facc15; --accent:#111827; }
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+    a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+    header,main,footer{max-width:900px;margin:0 auto;padding:24px}
+    header{padding-top:32px}
+    .badge{display:inline-block;background:var(--brand);color:#000;padding:.25rem .5rem;border-radius:.5rem;font-weight:600}
+    h1{font-size:1.875rem;line-height:1.2;margin:0 0 .25rem}
+    p.lead{color:var(--muted);margin:.25rem 0 1.25rem}
+    section{margin:2rem 0}
+    h2{font-size:1.25rem;margin:1.25rem 0 .5rem}
+    ul{padding-left:1.25rem}
+    .card{border:1px solid #e5e7eb;border-radius:12px;padding:16px;background:#fff}
+    footer{color:var(--muted);font-size:.95rem;border-top:1px solid #e5e7eb;margin-top:32px}
+  </style>
+</head>
+<body>
+  <header aria-label="Page header">
+    <span class="badge" aria-hidden="true">Accessibility</span>
+    <h1>Accessibility Statement</h1>
+    <p class="lead">We’re committed to making Live Read usable by everyone. This page describes our standards, status, and how to contact us.</p>
+  </header>
+
+  <main id="content">
+    <section aria-labelledby="standards">
+      <h2 id="standards">Standards we follow</h2>
+      <div class="card">
+        <ul>
+          <li>WCAG 2.2 AA where feasible.</li>
+          <li>Apple HIG + iOS Accessibility APIs.</li>
+          <li>Regular testing with VoiceOver & Dynamic Type.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="contact">
+      <h2 id="contact">Contact</h2>
+      <ul>
+        <li>Email: <a href="mailto:support@liveread.app">support@liveread.app</a></li>
+        <li>Website: <a href="/contact">/contact</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <p>© <span id="y"></span> Live Read.</p>
+    <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+  </footer>
+</body>
+</html>
