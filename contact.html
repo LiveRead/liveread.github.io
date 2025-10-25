@@ -22,7 +22,13 @@ layout: none
       backdrop-filter:saturate(150%) blur(6px); border-bottom:1px solid #eee; z-index:100; }
     .wrap { max-width:1040px; margin:0 auto; padding:1rem 1.25rem; }
     nav a { margin-right:.5rem; padding:.5rem .75rem; border-radius:10px; color:var(--fg); }
-    nav a.is-active { background:#f3f4f6; }
+    nav a.is-active, nav a[aria-current="page"] { background:#f3f4f6; }
+
+    .button.nav {
+      background:#111; color:#fff; padding:.55rem .9rem; border-radius:999px; line-height:1;
+      text-decoration:none; border:1px solid #111; transition:background .15s ease;
+    }
+    .button.nav:hover { background:#000; border-color:#000; color:#fff; }
 
     .card { border:1px solid #e5e7eb; border-radius:16px; background:#fff; padding:1.75rem 2rem; }
     .form-wrap { position:relative; width:100%; }
@@ -42,13 +48,16 @@ layout: none
              style="border-radius:10px;border:1px solid rgba(0,0,0,.05);object-fit:cover;">
         <strong style="font-size:1.05rem;color:var(--fg)">Live Read</strong>
       </a>
-      <nav>
-        <a href="/" data-nav>Home</a>
-        <a href="/contact" data-nav class="is-active" aria-current="page">Contact</a>
-        <a href="/privacy" data-nav>Privacy</a>
-        <a href="/accessibility" data-nav>Accessibility</a>
-      </nav>
-      <a class="button nav" href="https://apps.apple.com/us/app/live-read/id6749649547" rel="noopener">Download</a>
+
+      <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;">
+        <nav>
+          <a href="/" data-nav>Home</a>
+          <a href="/contact" data-nav class="is-active" aria-current="page">Contact</a>
+          <a href="/privacy" data-nav>Privacy</a>
+          <a href="/accessibility" data-nav>Accessibility</a>
+        </nav>
+        <a class="button nav" href="https://apps.apple.com/us/app/live-read/id6749649547" rel="noopener">Download</a>
+      </div>
     </div>
   </div>
 </header>
@@ -71,13 +80,8 @@ layout: none
 </div>
 
 <footer role="contentinfo">
-  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;justify-content:space-between;padding:1.25rem 0;">
-    <small>© Live Read 2025. Built for people with vision impairments.</small>
-    <div style="display:flex;gap:.75rem;align-items:center;">
-      <a href="/privacy" data-nav>Privacy</a>
-      <a href="/accessibility" data-nav>Accessibility</a>
-      <a href="mailto:hello@liveread.app">hello@liveread.app</a>
-    </div>
+  <div class="wrap" style="padding:1.25rem 0;">
+    <small>© Live Read 2025.</small>
   </div>
 </footer>
 
