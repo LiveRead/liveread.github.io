@@ -24,13 +24,20 @@ layout: none
     nav a { margin-right:.5rem; padding:.5rem .75rem; border-radius:10px; color:var(--fg); }
     nav a.is-active, nav a[aria-current="page"] { background:#f3f4f6; }
 
-    .button.nav {
-      background:#111; color:#fff; padding:.55rem .9rem; border-radius:999px; line-height:1;
-      text-decoration:none; border:1px solid #111; transition:background .15s ease;
-    }
+    .button { display:inline-flex; align-items:center; gap:.5rem; font-weight:600; border-radius:999px;
+      padding:.65rem 1rem; line-height:1; border:1px solid #111; transition:background .15s ease; }
+    .button.nav { background:#111; color:#fff; border-color:#111; }
     .button.nav:hover { background:#000; border-color:#000; color:#fff; }
+    .button.primary { background:#111; color:#fff; border-color:#111; }
+    .button.primary:hover { background:#000; border-color:#000; }
+    .button.ghost { background:#fff; color:#111; border-color:#e5e7eb; }
+    .button.ghost:hover { background:#f8f9fb; }
 
     .card { border:1px solid #e5e7eb; border-radius:16px; background:#fff; padding:1.75rem 2rem; }
+    .lede { color:var(--muted); margin:.5rem 0 1.25rem; max-width:65ch; }
+    .cta-row { display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; }
+    .sep { height:1px; background:#eee; margin:1.75rem 0; border:0; }
+
     .form-wrap { position:relative; width:100%; }
     .form-wrap iframe { width:100%; height:1200px; border:0; }
     @media (max-width:600px){ .form-wrap iframe { height:1350px; } }
@@ -64,15 +71,31 @@ layout: none
 
 <div class="wrap">
   <main id="main-content" tabindex="-1">
-    <article class="card">
-      <div class="form-wrap">
-        <iframe
-          src="https://docs.google.com/forms/d/e/1FAIpQLSdxUYNsCw4R7D9vUzttQqWHRxoJlqnllNO8RapgEYqiagh80w/viewform?embedded=true"
-          title="Live Read Contact Form"
-          marginheight="0" marginwidth="0">Loading…</iframe>
+    <article class="card" aria-labelledby="contact-title">
+      <h1 id="contact-title" style="margin:0;font-size:1.35rem;">Contact Live Read</h1>
+      <p class="lede">Questions, feedback, or accessibility suggestions? Email is fastest. You can also use the form below.</p>
+
+      <div class="cta-row" role="group" aria-label="Contact options">
+        <a class="button primary"
+           href="mailto:support@liveread.app?subject=Live%20Read%20Support&body=Hi%20Live%20Read%20team%2C%0A%0A(Please%20describe%20your%20question%20or%20issue%20here.)%0ADevice%3A%20%0AiOS%20version%3A%20%0AApp%20version%3A%20"
+           aria-label="Email support at support@liveread.app">
+          Email support@liveread.app
+        </a>
+        <a class="button ghost" href="#form">Open contact form</a>
       </div>
 
-      <p style="margin-top:1.25rem;font-size:.95rem;color:var(--muted);">
+      <hr class="sep" aria-hidden="true">
+
+      <div id="form" class="form-wrap" aria-label="Contact form">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSdxUYNsCw4R7D9vUzttQqWHRxoJlqnllNO8RapgEYqiagh80w/viewform?embedded=true"
+          title="Live Read Contact Form" marginheight="0" marginwidth="0">Loading…</iframe>
+        <noscript>
+          <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdxUYNsCw4R7D9vUzttQqWHRxoJlqnllNO8RapgEYqiagh80w/viewform">Open the contact form</a></p>
+        </noscript>
+      </div>
+
+      <p style="margin-top:1rem;font-size:.95rem;color:var(--muted);">
         Prefer email? <a href="mailto:support@liveread.app">support@liveread.app</a>
       </p>
     </article>
