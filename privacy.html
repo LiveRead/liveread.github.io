@@ -13,56 +13,64 @@ layout: none
   <link rel="icon" type="image/png" href="/favicon.png?v=2">
   <style>
     :root { --bg:#ffffff; --fg:#0a0a0a; --muted:#4b5563; --brand:#facc15; --accent:#111827; }
-    html, body { margin:0; padding:0; background:var(--bg); color:var(--fg);
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
-    a { color:var(--accent); text-decoration:none; }
-    a.button { display:inline-block; background:var(--fg); color:#fff; padding:.85rem 1.1rem; border-radius:14px; font-weight:600; }
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+    a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;transition:color .15s ease;}
+    a:hover{color:#000;text-decoration-thickness:3px;}
+    a:focus{outline:3px solid var(--accent);outline-offset:2px;border-radius:8px;}
 
-    header { position:sticky; top:0; background:rgba(255,255,255,.9); backdrop-filter:saturate(150%) blur(6px);
-      border-bottom:1px solid #eee; box-shadow:0 1px 2px rgba(0,0,0,.05); z-index:100; }
-
-    .wrap { max-width:1040px; margin:0 auto; padding:1rem 1.25rem; }
-    nav a { margin-right:.5rem; padding:.5rem .75rem; border-radius:10px; color:var(--fg); }
-    nav a[aria-current="page"], nav a.is-active { background:#f3f4f6; }
-
-    .button.nav {
-      display:inline-block; background:#111; color:#fff;
-      padding:.55rem .9rem; border-radius:999px; line-height:1;
-      text-decoration:none; border:1px solid #111;
-      transition:background .15s ease, border-color .15s ease, color .15s ease;
+    /* Buttons */
+    .button.nav{
+      background:#111;color:#fff;padding:.55rem .9rem;border-radius:999px;line-height:1;
+      text-decoration:none;border:1px solid #111;transition:background .15s ease;
     }
-    .button.nav:hover { background:#000; border-color:#000; color:#fff; }
+    .button.nav:hover{background:#000;border-color:#000;color:#fff;}
 
-    .card { border:1px solid #e5e7eb; border-radius:16px; background:#fff; }
-    footer { border-top:1px solid #eee; margin-top:3rem; }
-
+    header{position:sticky;top:0;background:rgba(255,255,255,.9);
+      backdrop-filter:saturate(150%) blur(6px);border-bottom:1px solid #eee;
+      box-shadow:0 1px 2px rgba(0,0,0,.05);z-index:100}
+    .wrap{max-width:1040px;margin:0 auto;padding:1rem 1.25rem}
     .topbar{display:flex;align-items:center;justify-content:space-between;gap:.5rem;flex-wrap:wrap}
     .brand{display:flex;align-items:center;gap:.6rem;text-decoration:none}
     .actions{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+    nav a{margin-right:.5rem;padding:.5rem .75rem;border-radius:10px;color:var(--fg);text-decoration:none}
+    nav a[aria-current="page"],nav a.is-active{background:#f3f4f6}
 
-    h1 { margin-top:2rem; margin-bottom:1rem; font-size:clamp(2rem,4vw,2.75rem); line-height:1.2; font-weight:700; }
-    h2 { margin-top:2rem; margin-bottom:.75rem; font-size:clamp(1.4rem,3vw,1.75rem); line-height:1.3; font-weight:600; }
-    p { margin-top:0; margin-bottom:1.25rem; line-height:1.6; }
-    ul { margin:0 0 1.5rem 1.25rem; }
-    li { margin-bottom:.5rem; line-height:1.6; }
+    .card{border:1px solid #e5e7eb;border-radius:16px;background:#fff;padding:1.75rem 2rem}
+    h1{margin-top:0;margin-bottom:1rem;font-size:clamp(2rem,4vw,2.5rem);font-weight:700}
+    h2{margin-top:2rem;margin-bottom:.75rem;font-size:clamp(1.4rem,3vw,1.75rem);font-weight:600}
+    p{margin-top:0;margin-bottom:1.25rem;line-height:1.6}
+    ul{margin:0 0 1.5rem 1.25rem}
+    li{margin-bottom:.5rem;line-height:1.6}
 
-    @media (max-width:600px){
-      .actions{ width:100%; justify-content:space-between; gap:.5rem; }
-      nav{ display:flex; flex-wrap:wrap; gap:.25rem .5rem; }
-      nav a{ padding:.45rem .6rem; margin-right:0; }
-      .button.nav{ flex:1 0 auto; text-align:center; }
-      .brand img{ width:36px; height:36px; }
+    /* Footer */
+    footer{border-top:1px solid #eee;margin-top:3rem;background:#fafafa}
+    footer .footer-wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;padding:1.25rem 1rem}
+    footer small{color:var(--muted)}
+    footer nav a{color:var(--muted);text-decoration:none;margin-right:1rem;font-size:.9rem}
+    footer nav a:hover{color:var(--fg);text-decoration:underline}
+    footer .footer-social a{color:var(--muted);text-decoration:none;margin-left:.5rem;display:inline-flex;align-items:center}
+    footer .footer-social a:hover{color:var(--fg)}
+
+    @media(max-width:600px){
+      .actions{width:100%;justify-content:space-between;gap:.5rem}
+      nav{display:flex;flex-wrap:wrap;gap:.25rem .5rem}
+      nav a{padding:.45rem .6rem;margin-right:0}
+      .button.nav{flex:1 0 auto;text-align:center}
+      .brand img{width:36px;height:36px}
     }
   </style>
 </head>
 
 <body>
+<a href="#main" class="skip">Skip to content</a>
+
 <header role="banner">
   <div class="wrap" aria-label="Top navigation">
     <div class="topbar">
       <a class="brand" href="/">
         <img src="/favicon.png" alt="Live Read logo" width="40" height="40"
-             style="border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.15); border:1px solid rgba(0,0,0,.05);object-fit:cover;">
+             style="border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.15);border:1px solid rgba(0,0,0,.05);object-fit:cover;">
         <strong style="font-size:1.05rem;color:var(--fg)">Live Read</strong>
       </a>
 
@@ -80,9 +88,9 @@ layout: none
 </header>
 
 <div class="wrap">
-  <main class="wrap" id="main-content" tabindex="-1">
-    <article class="card" style="padding:1.75rem 2rem;">
-      <h1>Live Read Privacy Policy</h1>
+  <main id="main" tabindex="-1">
+    <article class="card">
+      <h1>Privacy Policy</h1>
       <p><strong>Effective Date:</strong> October 2025</p>
 
       <h2>Our Promise</h2>
@@ -90,37 +98,53 @@ layout: none
 
       <h2>Information We Do Not Collect</h2>
       <ul>
-        <li><strong>We do not collect your name, email, location, or usage data.</strong></li>
-        <li><strong>We do not track you, show ads, or use analytics services.</strong></li>
-        <li><strong>We do not upload photos, video, or recognized text to any server.</strong></li>
+        <li><strong>No personal data.</strong> We do not collect your name, email, or location.</li>
+        <li><strong>No analytics or ads.</strong> We do not track usage or show advertisements.</li>
+        <li><strong>No uploads.</strong> Photos, video, and recognized text never leave your device.</li>
       </ul>
-      <p>All processing happens locally using Apple on-device frameworks.</p>
+      <p>All processing happens locally using Apple’s on-device frameworks.</p>
 
-      <h2>How Camera Access Works</h2>
-      <p>Live Read needs your camera to see printed text and read it aloud. The camera view is never recorded or saved. You can disable camera access anytime in iOS Settings under Live Read.</p>
+      <h2>Camera Access</h2>
+      <p>Live Read requires the camera to read printed text aloud. The camera feed is never recorded, stored, or transmitted. You can disable camera access anytime under iOS Settings → Live Read.</p>
 
-      <h2>Policy Updates</h2>
-      <p>If we ever change how Live Read handles data, we will update this page and post a new effective date.</p>
+      <h2>Policy Changes</h2>
+      <p>If this policy changes, we’ll update this page and include a new effective date.</p>
     </article>
   </main>
 </div>
 
 <footer role="contentinfo">
-  <div class="wrap" style="padding:1.25rem 0;">
-    <small>© Live Read 2025.</small>
+  <div class="wrap footer-wrap">
+    <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;">
+      <img src="/favicon.png" alt="" width="24" height="24" style="border-radius:6px;">
+      <small>© <span id="yr"></span> Live Read</small>
+    </div>
+
+    <nav aria-label="Footer">
+      <a href="/privacy" aria-current="page">Privacy</a>
+      <a href="/accessibility">Accessibility</a>
+      <a href="/contact">Contact</a>
+    </nav>
+
+    <div class="footer-social">
+      <a aria-label="Live Read on Facebook" href="https://www.facebook.com/profile.php?id=61583394570929">FB</a>
+      <a aria-label="Live Read on LinkedIn" href="https://www.linkedin.com/in/live-read-2b645438b/">LinkedIn</a>
+      <a aria-label="Live Read on X" href="https://x.com/LiveReadApp">X</a>
+      <a aria-label="Live Read on YouTube" href="https://www.youtube.com/@Live-Read">YouTube</a>
+    </div>
   </div>
 </footer>
 
 <script>
-(function () {
-  function slug(s){ if(!s) return 'index'; s=(''+s).split('/').pop(); s=s.replace(/[#?].*$/,''); if(!s) s='index.html'; return s.replace(/\.html?$/i,'').toLowerCase()||'index'; }
-  var current = slug(location.pathname);
+(function(){
+  var path = location.pathname.replace(/\/+$/,'') || '/';
   document.querySelectorAll('[data-nav]').forEach(function(a){
-    var hrefSlug = slug(a.getAttribute('href')||'');
-    var match = hrefSlug === current;
+    var href = a.getAttribute('href').replace(/\/+$/,'') || '/';
+    var match = href === path;
     a.classList.toggle('is-active', match);
     if (match) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
   });
+  document.getElementById('yr').textContent = new Date().getFullYear();
 })();
 </script>
 </body>
