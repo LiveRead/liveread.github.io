@@ -62,7 +62,15 @@ nav a[aria-current="page"], nav a.is-active { background:#f3f4f6; }
 .kicker { color:var(--muted); font-weight:600; letter-spacing:.04em; text-transform:uppercase; font-size:.8rem; }
 h1 { font-size:clamp(2rem, calc(4vw + 1rem), 3rem); line-height:1.1; margin:.5rem 0 0; }
 p.lead { font-size:clamp(1rem,1.2vw + .5rem,1.2rem); color:var(--muted); }
-footer { border-top:1px solid #eee; margin-top:3rem; }
+
+/* Footer */
+footer { border-top:1px solid #eee; margin-top:3rem; background:#fafafa; }
+footer .footer-wrap { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; padding:1.25rem 1rem; }
+footer small { color:var(--muted); }
+footer nav a { color:var(--muted); text-decoration:none; margin-right:1rem; font-size:.9rem; }
+footer nav a:hover { color:var(--fg); text-decoration:underline; }
+footer .footer-social a { color:var(--muted); text-decoration:none; margin-left:.5rem; display:inline-flex; align-items:center; }
+footer .footer-social a:hover { color:var(--fg); }
 
 /* Responsive header fix */
 @media (max-width:600px) {
@@ -71,6 +79,7 @@ footer { border-top:1px solid #eee; margin-top:3rem; }
   nav a { padding:.45rem .6rem; margin-right:0; }
   .button.nav { flex:1 0 auto; text-align:center; }
   .brand img { width:36px; height:36px; }
+  footer .footer-wrap { flex-direction:column; align-items:flex-start; gap:.75rem; }
 }
 
 /* Accessibility */
@@ -118,7 +127,6 @@ footer { border-top:1px solid #eee; margin-top:3rem; }
         <div class="kicker">Designed for people with vision impairments</div>
         <h1 id="hero-title">Point your camera at text. Hear it read aloud.</h1>
         <p class="lead">Live Read helps people with vision impairments read printed labels, menus, mail, and more. Instantly, with clear spoken feedback.</p>
-        <!-- buttons removed -->
       </div>
       <figure class="card" style="overflow:hidden;">
         <img src="/hero-1.jpg" alt="Live Read reads a Tomato Soup label aloud with recognized text visible on screen."
@@ -147,11 +155,23 @@ footer { border-top:1px solid #eee; margin-top:3rem; }
 </div>
 
 <footer role="contentinfo">
-  <div class="wrap">
-    <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;
-                justify-content:space-between;padding:1.25rem 0;">
-      <small>© Live Read 2025.</small>
-      <!-- footer links removed -->
+  <div class="wrap footer-wrap">
+    <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;">
+      <img src="/favicon.png" alt="" width="24" height="24" style="border-radius:6px;">
+      <small>© <span id="yr"></span> Live Read</small>
+    </div>
+
+    <nav aria-label="Footer">
+      <a href="/privacy">Privacy</a>
+      <a href="/accessibility">Accessibility</a>
+      <a href="/contact">Contact</a>
+    </nav>
+
+    <div class="footer-social">
+      <a aria-label="Live Read on Facebook" href="https://www.facebook.com/profile.php?id=61583394570929">FB</a>
+      <a aria-label="Live Read on LinkedIn" href="https://www.linkedin.com/in/live-read-2b645438b/">LinkedIn</a>
+      <a aria-label="Live Read on X" href="https://x.com/LiveReadApp">X</a>
+      <a aria-label="Live Read on YouTube" href="https://www.youtube.com/@Live-Read">YouTube</a>
     </div>
   </div>
 </footer>
@@ -165,6 +185,7 @@ footer { border-top:1px solid #eee; margin-top:3rem; }
     a.classList.toggle('is-active', match);
     if (match) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
   });
+  document.getElementById('yr').textContent = new Date().getFullYear();
 })();
 </script>
 </body>
