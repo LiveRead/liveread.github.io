@@ -10,7 +10,7 @@ layout: none
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Live Read — Contact</title>
   <meta name="description" content="Contact the Live Read team for questions, feedback, or support.">
-<link rel="icon" type="image/png" href="/favicon.png?v=3">
+  <link rel="icon" type="image/png" href="/favicon.png?v=3">
   <style>
     :root { --bg:#ffffff; --fg:#0a0a0a; --muted:#4b5563; --brand:#facc15; --accent:#111827; }
     html, body { margin:0; padding:0; background:var(--bg); color:var(--fg);
@@ -26,6 +26,8 @@ layout: none
       padding:.9rem 1.25rem; line-height:1; border:1px solid #111; transition:background .15s ease,border-color .15s ease,color .15s ease; }
     .button.primary { background:#111; color:#fff; border-color:#111; }
     .button.primary:hover { background:#000; border-color:#000; }
+    .button.secondary { background:#fff; color:#111; border-color:#111; }
+    .button.secondary:hover { background:#f3f4f6; }
     .button.nav { background:#111; color:#fff; padding:.55rem .9rem; border-radius:999px; line-height:1; border-color:#111; }
     .button.nav:hover { background:#000; border-color:#000; color:#fff; }
 
@@ -42,13 +44,18 @@ layout: none
     .card { border:1px solid #e5e7eb; border-radius:16px; background:#fff; padding:1.75rem 2rem; }
     .lede { color:var(--muted); margin:.5rem 0 1.25rem; max-width:65ch; }
     .cta-row { display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; }
-    .sep { height:1px; background:#eee; margin:1.75rem 0; border:0; }
+    .sep { height:1px; background:#eee; margin:1.25rem 0; border:0; }
 
-    .form-wrap iframe { width:100%; height:1200px; border:0; }
-    @media (max-width:600px){ .actions{width:100%;justify-content:space-between;gap:.5rem}
-      nav{display:flex;flex-wrap:wrap;gap:.25rem .5rem} nav a{padding:.45rem .6rem;margin-right:0}
-      .button.nav{flex:1 0 auto;text-align:center} .brand img{width:36px;height:36px}
-      .form-wrap iframe{height:1350px}
+    .email-inline { font-weight:600; }
+    .tiny { color:var(--muted); font-size:.95rem; margin:.75rem 0 0; }
+
+    @media (max-width:600px){
+      .actions{width:100%;justify-content:space-between;gap:.5rem}
+      nav{display:flex;flex-wrap:wrap;gap:.25rem .5rem}
+      nav a{padding:.45rem .6rem;margin-right:0}
+      .button.nav{flex:1 0 auto;text-align:center}
+      .brand img{width:36px;height:36px}
+      .card{padding:1.35rem 1.25rem}
     }
 
     /* Footer (shared) */
@@ -96,7 +103,7 @@ layout: none
   <main id="main" tabindex="-1">
     <article class="card" aria-labelledby="contact-title">
       <h1 id="contact-title" style="margin:0;font-size:1.6rem;">Contact Live Read</h1>
-      <p class="lede">Email is fastest. You can also use the form below to share feedback, accessibility suggestions, or general questions.</p>
+      <p class="lede">Email us any time. We read every message and reply by email.</p>
 
       <div class="cta-row" role="group" aria-label="Contact options">
         <a class="button primary"
@@ -104,18 +111,15 @@ layout: none
            aria-label="Email support at support@liveread.app">
           Email support@liveread.app
         </a>
+
+        <button class="button secondary" type="button" id="copyEmail" aria-label="Copy support email address">
+          Copy email
+        </button>
       </div>
 
-      <hr class="sep" aria-hidden="true">
-
-      <div id="form" class="form-wrap" aria-label="Contact form">
-        <iframe
-          src="https://docs.google.com/forms/d/e/1FAIpQLSdxUYNsCw4R7D9vUzttQqWHRxoJlqnllNO8RapgEYqiagh80w/viewform?embedded=true"
-          title="Live Read Contact Form" marginheight="0" marginwidth="0">Loading…</iframe>
-        <noscript>
-          <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdxUYNsCw4R7D9vUzttQqWHRxoJlqnllNO8RapgEYqiagh80w/viewform">Open the contact form</a></p>
-        </noscript>
-      </div>
+      <p class="tiny">
+        Or copy and paste: <span class="email-inline">support@liveread.app</span>
+      </p>
     </article>
   </main>
 </div>
@@ -152,8 +156,22 @@ layout: none
     a.classList.toggle('is-active', match);
     if (match) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
   });
+
   // footer year
   document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // copy email
+  var btn = document.getElementById('copyEmail');
+  if (btn && navigator.clipboard) {
+    btn.addEventListener('click', function(){
+      navigator.clipboard.writeText('support@liveread.app').then(function(){
+        btn.textContent = 'Copied';
+        setTimeout(function(){ btn.textContent = 'Copy email'; }, 1500);
+      });
+    });
+  } else if (btn) {
+    btn.style.display = 'none';
+  }
 })();
 </script>
 </body>
